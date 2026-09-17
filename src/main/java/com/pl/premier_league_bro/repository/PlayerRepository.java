@@ -14,9 +14,9 @@ import com.pl.premier_league_bro.entity.Player;
 @Repository
 public interface PlayerRepository extends JpaRepository<Player, String> {
 
-    void deleteByName(String name);
+    void deleteByPlayer(String name);
 
-    Optional<Player> findByName(String name);
+    Optional<Player> findByPlayer(String name);
 
     // In PlayerRepository.java
     List<Player> findByTeam(String team);
@@ -33,8 +33,8 @@ public interface PlayerRepository extends JpaRepository<Player, String> {
 
     @Query("SELECT p FROM Player p WHERE " +
             "(:team IS NULL OR p.team = :team) AND " +
-            "(:name IS NULL OR LOWER(p.player) LIKE LOWER(CONCAT('%', :name, '%'))) AND " +
-            "(:pos IS NULL OR LOWER(p.pos) LIKE LOWER(CONCAT('%', :pos, '%'))) AND " +
-            "(:nation IS NULL OR LOWER(p.nation) LIKE LOWER(CONCAT('%', :nation, '%')))")
+            "(:name IS NULL OR LOWER(p.player) LIKE LOWER(CONCAT('%', CAST(:name AS string), '%'))) AND " +
+            "(:pos IS NULL OR LOWER(p.pos) LIKE LOWER(CONCAT('%', CAST(:pos AS string), '%'))) AND " +
+            "(:nation IS NULL OR LOWER(p.nation) LIKE LOWER(CONCAT('%', CAST(:nation AS string), '%')))")
     List<Player> searchPlayers(String team, String name, String pos, String nation);
 }

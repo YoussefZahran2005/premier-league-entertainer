@@ -1,12 +1,15 @@
 package com.pl.premier_league_bro.service;
 
 import java.util.List;
+
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.pl.premier_league_bro.entity.Player;
 import com.pl.premier_league_bro.exception.PlayerNotFoundException;
 import com.pl.premier_league_bro.repository.PlayerRepository;
 
+@Service 
 public class PlayerService {
 
     private final PlayerRepository playerRepository;
@@ -44,7 +47,7 @@ public class PlayerService {
     }
 
     public Player updatePlayer(Player updatedPlayer) {
-        Player playerToUpdate = playerRepository.findByName(updatedPlayer.getPlayer())
+        Player playerToUpdate = playerRepository.findByPlayer(updatedPlayer.getPlayer())
                 .orElseThrow(() -> new PlayerNotFoundException(
                         "Player not found with name: " + updatedPlayer.getPlayer()));
 
