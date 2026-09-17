@@ -531,15 +531,6 @@ Thank you for the inspiration and for sharing your work publicly.
 
 ---
 
-## Author
-
-**Yusuf Zahran**
-
-Computer Science & AI Student
-Backend Developer — Java / Spring Boot
-
----
-
 <p align="center">
   Built with Java, Spring Boot, PostgreSQL, and a lot of debugging.
 </p>
